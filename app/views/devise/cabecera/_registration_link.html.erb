@@ -1,0 +1,11 @@
+<li class="nav-item">
+  <% if  user_signed_in? %>
+    <%= link_to edit_user_registration_path, class: 'nav-link', title: t('.account') do %>
+      <i class="fas fa-user-cog" /></i>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_registration_path, class: 'nav-link', title: t('.sign_up') do %>
+      <i class="fas fa-user-plus" /></i>
+    <% end %>
+  <% end %>
+</li>

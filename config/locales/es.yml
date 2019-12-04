@@ -1,0 +1,9 @@
+es:
+  devise:
+    cabecera:
+      registration_link:
+        account: Cuenta
+        sign_up: Registrarse
+      session_link:
+        sign_in: Entrar
+        sign_out: Salir

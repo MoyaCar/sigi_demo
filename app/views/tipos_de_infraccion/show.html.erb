@@ -1,0 +1,28 @@
+<% content_for :titulo_de_pagina, "Tipo de infracción #{@tipo_de_infraccion.identificador}" %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Editar', edit_tipo_de_infraccion_path(@tipo_de_infraccion), class: 'btn btn-success' %>
+    <%= link_to 'Destruir', tipo_de_infraccion_path(@tipo_de_infraccion), class: 'btn btn-danger',
+      method: :delete,
+      data: { confirm: '¿Confirma que quiere destruir el Tipo de Infracción?' } %>
+  </div>
+
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', :back, class: "btn btn-dark" %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <h2>Atributos</h2>
+
+    <dl class="row">
+      <dt class="col-4">Identificador</dt>
+      <dd class="col-8"><%= @tipo_de_infraccion.identificador %></dt>
+
+      <dt class="col-4">Descripción</dt>
+      <dd class="col-8"><%= @tipo_de_infraccion.descripcion %></dt>
+    </dl>
+  </div>
+</div>

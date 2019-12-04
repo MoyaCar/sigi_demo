@@ -1,0 +1,17 @@
+<%= form_with(model: [dictamen, resolucion], url: dictamen_resolucion_path(dictamen), local: true) do |form| %>
+  <div class="form-group form-row row">
+    <%= form.label :observacion, class: 'col-2 col-form-label' %>
+    <div class="col-10">
+      <%= form.rich_text_area :observacion, class: 'trix-content form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group form-row row">
+    <%= form.label :multa, class: 'col-2 col-form-label' %>
+    <%= form.number_field :multa, class: 'form-control col-10' %>
+  </div>
+
+  <p>
+    <%= form.submit class: 'btn btn-dark' %>
+  </p>
+<% end %>

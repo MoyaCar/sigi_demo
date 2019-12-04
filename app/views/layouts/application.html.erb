@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= titulo_de_app %></title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/librerias_top' %>
+  </head>
+
+   <body class='cuerpo'>
+    <div class="wrapper">
+      <%= render 'layouts/sidebar' %>
+      <div id="content">
+        <%= render 'layouts/cabecera_new' %>
+        <div class='container cuerpa'>
+        <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= render 'layouts/librerias_bot' %>
+  </body>
+</html>

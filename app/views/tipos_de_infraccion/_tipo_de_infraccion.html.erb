@@ -1,0 +1,8 @@
+<tr id="tipo_de_infraccion-<%= tipo_de_infraccion.id %>">
+  <td><%= tipo_de_infraccion.identificador %></td>
+  <td><%= link_to 'Mostrar', tipo_de_infraccion_path(tipo_de_infraccion) %></td>
+  <td><%= link_to 'Editar', edit_tipo_de_infraccion_path(tipo_de_infraccion) %></td>
+  <td><%= link_to 'Destruir', tipo_de_infraccion_path(tipo_de_infraccion),
+    method: :delete,
+    data: { confirm: '¿Confirma que quiere destruir el tipo de infracción?' } %></td>
+</tr>

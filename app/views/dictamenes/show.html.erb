@@ -1,0 +1,33 @@
+<% content_for :titulo_de_pagina, "Dictamen #{@dictamen.identificador}" %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Editar', edit_expediente_dictamen_path(@expediente, @dictamen), class: 'btn btn-success' %>
+    <%= link_to 'Destruir', expediente_dictamen_path(@expediente, @dictamen),
+              method: :delete,
+              data: { confirm: '¿Confirma que quiere destruir el dictamen?' }, class: 'btn btn-danger' %>
+    <% if @dictamen.resolucion.present? %>
+      <%= link_to 'Ver resolución', dictamen_resolucion_path(@dictamen), class: 'btn btn-dark' %>
+    <% else %>
+      <%= link_to 'Crear resolución', new_dictamen_resolucion_path(@dictamen), class: 'btn btn-dark' %>
+    <% end%>
+  </div>
+
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', expediente_path(@expediente), class: 'btn btn-dark' %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <h2>Atributos</h2>
+
+    <dl class="row">
+      <dt class="col-4">Identificador</dt>
+      <dd class="col-8"><%= @dictamen.identificador %></dt>
+
+      <dt class="col-4">Texto</dt>
+      <dd class="col-8"><%= @dictamen.texto %></dt>
+    </dl>
+  </div>
+</div>

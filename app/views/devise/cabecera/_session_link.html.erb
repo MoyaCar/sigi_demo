@@ -1,0 +1,11 @@
+<li class="nav-item">
+  <% if  user_signed_in? %>
+    <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', title: t('.sign_out') do %>
+      <i class="fas fa-sign-out-alt" /></i>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path, class: 'nav-link', title: t('.sign_in') do %>
+      <i class="fas fa-sign-in-alt" /></i>
+    <% end %>
+  <% end %>
+</li>

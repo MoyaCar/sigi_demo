@@ -1,0 +1,26 @@
+<% content_for :titulo_de_pagina, 'Tipo De Infracción' %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Crear nuevo Tipo de Infracción' , new_tipo_de_infraccion_path, class: 'btn btn-dark' %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <table class="table table-striped table-hover table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Identificador</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render @tipos_de_infraccion %>
+      </tbody>
+    </table>
+  </div>
+</div>

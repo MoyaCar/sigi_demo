@@ -1,0 +1,11 @@
+// Estilos de las librerías que usamos.
+//@import 'bootstrap/scss/bootstrap';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import 'trix/dist/trix';
+@import 'actiontext';
+
+// Cargar todos los estilos específicos de la aplicación.
+@import 'layout';
+@import 'landing';
+@import 'parts';

@@ -1,0 +1,123 @@
+
+<%= form_with(model: acta, local: true) do |form| %>
+  <div class="row justify-content-center">
+    <div class="form-group col-10 col-sm-5 campo">
+      <%= form.label :expediente, class: 'bmd-label-floating text-secondary' %>
+        <%= form.collection_select :expediente_id, Expediente.all, :id,
+        :identificador, { include_blank: false}, class: 'form-control rounded' %>
+      <span class="bmd-help">Numero de expediente asignado</span>
+    </div>
+
+    <div class="form-group col-5 col-sm-3 campo">
+      <%= form.label :numero, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :numero, class: 'form-control rounded ' %>
+        <span class="bmd-help">Numero de acta</span>
+      </div>
+
+      <div class="form-group text-truncate col-5 col-sm-2 campo">
+        <%= form.label :tipo_de_infraccion, class: 'bmd-label-floating text-secondary' %>
+        <%= form.collection_select :tipo_de_infraccion_id, TipoDeInfraccion.all, :id,
+        :identificador, { include_blank: true }, class: 'form-control' %>
+        <span class="bmd-help">Seleccione tipo de infraccion</span>
+      </div>
+    </div>
+
+    <div class='row justify-content-center'>
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :lugar, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :lugar, class: 'form-control' %>
+        <span class="bmd-help">Lugar donde se cometió insfracción</span>
+      </div>
+
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :tipo_de_unidad, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :tipo_de_unidad, class: 'form-control' %>
+        <span class="bmd-help">Seleccione tipo de unidad</span>
+      </div>
+    </div>
+
+    <div class='row justify-content-center'>
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :tipo_de_servicio, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :tipo_de_servicio, class: 'form-control' %>
+        <span class="bmd-help">Especifique tipo de servicio</span>
+      </div>
+
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :dominio, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :dominio, class: 'form-control' %>
+        <span class="bmd-help">Ingrese dominio del servicio</span>
+      </div>
+    </div>
+
+    <div class='row justify-content-center'>
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :titular, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :titular, class: 'form-control' %>
+        <span class="bmd-help">Ingrese nombre del titular</span>  
+      </div>
+
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :grupo, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :grupo, class: 'form-control' %>
+        <span class="bmd-help">Nombre de grupo prestador</span>
+      </div>
+    </div>
+
+    <div class='row justify-content-center'>
+      <div class="form-group col-10 col-sm-10 campo">
+        <%= form.label :domicilio, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :domicilio, class: 'form-control' %>
+        <span class="bmd-help">Ingrese domicilio completo</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="form-group col-10 col-sm-5 campo">
+        <%= form.label :documento, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :documento, class: 'form-control' %>
+        <span class="bmd-help">Ingrese Documento de Titular</span>
+      </div>
+
+      <div class="form-group col-5 col-sm-3 campo">
+        <%= form.label :fecha_y_hora, class: 'bmd-label-floating text-secondary' %>
+        <%= form.text_field :fecha_y_hora, class: 'form-control' %>
+        <span class="bmd-help">Fecha y Hora cuando el acta fue levantada</span>
+      </div>
+
+      <div class="form-group text-truncate col-5 col-sm-2 campo">
+        <%= form.label :estado, class: 'bmd-label-floating text-secondary campo' %>
+        <%= form.text_field :estado, class: 'form-control' %>
+        <span class="bmd-help">Estado actual del acta</span>
+      </div>
+    </div>
+
+    <div class='row justify-content-center mt-4'>
+      <div class='col-10'>
+        <div class='checkbox'>
+          <label class='text-secondary'>
+            <%= form.check_box :unidad_retenida %>
+            Unidad Retenida
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class='row justify-content-center mt-4'>
+      <div class='col-10'>
+        <div class='checkbox'>
+          <label class='text-secondary'>
+          <%= form.check_box :lista_de_pasajeros %>
+          Lista de Pasajeros
+          </label>
+        </div>
+      </div>
+    </div>
+
+  <%= render 'adjuntos/form', form: form %>
+  <div class='row justify-content-center'>
+    <div class='col-10'>
+      <%= form.submit class: 'btn btn-secondary btn-lg btn-block crear' %>
+    </div>
+  </div>
+<% end %>

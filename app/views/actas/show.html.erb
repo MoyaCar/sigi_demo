@@ -1,0 +1,109 @@
+<% content_for :titulo_de_pagina, "Acta #{@acta.numero}" %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Editar', edit_acta_path(@acta), class: 'btn btn-success' %>
+    <%= link_to 'Destruir', acta_path(@acta), class: 'btn btn-danger',
+      method: :delete,
+      data: { confirm: '¿Confirma que quiere destruir el acta?' } %>
+    <%= link_to 'Crear descargo', new_acta_descargo_path(@acta), class: "btn btn-dark" %>
+  </div>
+
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', :back, class: "btn btn-dark" %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <h2>Atributos</h2>
+
+    <dl class="row">
+      <dt class="col-4">Número</dt>
+      <dd class="col-8"><%= @acta.numero %></dt>
+
+      <% if @acta.expediente.present? %>
+        <dt class="col-4">Expediente</dt>
+        <dd class="col-8"><%= link_to @acta.expediente.identificador, @acta.expediente %></dt>
+
+        <dt class="col-4">Fecha de Asociación</dt>
+        <dd class="col-8"><%= l @acta.fecha_de_asociacion, format: :short %></dt>
+      <% end %>
+
+      <dt class="col-4">Infracción</dt>
+      <dd class="col-8"><%= @acta.tipo_de_infraccion %></dt>
+
+      <dt class="col-4">Lugar</dt>
+      <dd class="col-8"><%= @acta.lugar %></dt>
+
+      <dt class="col-4">Tipo de Unidad</dt>
+      <dd class="col-8"><%= @acta.tipo_de_unidad %></dt>
+
+      <dt class="col-4">Tipo de Servicio</dt>
+      <dd class="col-8"><%= @acta.tipo_de_servicio %></dt>
+
+      <dt class="col-4">Dominio</dt>
+      <dd class="col-8"><%= @acta.dominio %></dt>
+
+      <dt class="col-4">Titular</dt>
+      <dd class="col-8"><%= @acta.titular %></dt>
+
+      <dt class="col-4">Grupo</dt>
+      <dd class="col-8"><%= @acta.grupo %></dt>
+
+      <dt class="col-4">Documento</dt>
+      <dd class="col-8"><%= @acta.documento %></dt>
+
+      <dt class="col-4">Domicilio</dt>
+      <dd class="col-8"><%= @acta.domicilio %></dt>
+
+      <dt class="col-4">Estado</dt>
+      <dd class="col-8"><%= @acta.estado %></dt>
+
+      <dt class="col-4">Unidad Retenida</dt>
+      <dd class="col-8"><%= @acta.unidad_retenida %></dt>
+
+      <dt class="col-4">Lista de Pasajeros</dt>
+      <dd class="col-8"><%= @acta.lista_de_pasajeros %></dt>
+
+      <dt class="col-4">Fecha y Hora</dt>
+      <dd class="col-8"><%= l @acta.fecha_y_hora, format: :short if @acta.fecha_y_hora.present? %></dt>
+    </dl>
+
+    <% if @acta.descargos.any? %>
+      <h2>Descargos</h2>
+
+      <table class="table table-striped table-hover table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Descargo</th>
+            <th scope="col">Creador</th>
+            <th scope="col">Fecha de creado</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @acta.descargos.each do |descargo| %>
+            <tr>
+              <td><%= descargo.id %></td>
+              <td><%= descargo.user.email %></td>
+              <td><%= l descargo.created_at, format: :short %></td>
+              <td><%= link_to 'Mostrar', acta_descargo_path(@acta, descargo) %></td>
+              <td><%= link_to 'Editar', edit_acta_descargo_path(@acta, descargo) %></td>
+              <td><%= link_to 'Destruir', acta_descargo_path(@acta, descargo),
+                method: :delete,
+                data: { confirm: '¿Confirma que quiere destruir el descargo?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+    <% if @acta.adjuntos.any? %>
+      <%= render 'adjuntos/index', adjuntos: @acta.adjuntos %>
+    <% end %>
+  </div>
+</div>

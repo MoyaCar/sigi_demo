@@ -1,0 +1,43 @@
+<% content_for :titulo_de_pagina, 'Expedientes' %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Crear nuevo Expediente' , new_expediente_path, class: 'btn btn-dark' %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <table class="table table-striped table-hover table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Identificador</th>
+          <th scope="col">Tipo de documento</th>
+          <th scope="col">Referencia</th>
+          <th scope="col">Creado</th>
+          <th scope="col">Actualizado</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @expedientes.each do |expediente| %>
+          <tr id="expediente-<%= expediente.id %>">
+            <td><%= expediente.identificador %></td>
+            <td><%= expediente.tipo_de_documento %></td>
+            <td><%= expediente.referencia %></td>
+            <td><%= l expediente.created_at, format: :short %></td>
+            <td><%= l expediente.updated_at, format: :short %></td>
+            <td><%= link_to 'Mostrar', expediente_path(expediente) %></td>
+            <td><%= link_to 'Editar', edit_expediente_path(expediente) %></td>
+            <td><%= link_to 'Destruir', expediente_path(expediente),
+              method: :delete,
+              data: { confirm: '¿Confirma que quiere destruir el expediente?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

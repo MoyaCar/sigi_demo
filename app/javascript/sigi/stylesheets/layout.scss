@@ -1,0 +1,31 @@
+// body {
+//   // Estas variables son las default de bootstrap para la altura y el padding de
+//   // navbar.
+//   padding-top: $nav-link-height + $nav-link-padding-y * 3;
+// }
+
+// .botonera {
+//   margin-bottom: $spacer / 2;
+// }
+
+.alert {
+   z-index: 100;
+}
+
+// Trix es el editor WYSIWYG. Es necesario unsetear la altura del
+// form-control para que sea compatible el trix-content que autogenera el
+// rich_text_area.
+.trix-content {
+  &.form-control {
+  height: unset;
+  }
+}
+
+.crear {
+  color:rgb(176, 137, 190) !important ;
+  background-color:rgb(245, 245, 245) !important;
+}
+.crear:hover {
+  color: rgb(169, 131, 182) !important;
+  background-color: rgb(231, 231, 231) !important;
+}

@@ -1,0 +1,23 @@
+<% content_for :titulo_de_pagina, 'Nueva Acta de Infracción' %>
+
+<div class='row justify-content-center text-secondary mb-4'>
+  <div class='col-3'>
+    <%= link_to :back, class: 'btn btn-primary' do %>
+    <i class="material-icons text-secondary">
+    keyboard_backspace
+    </i>
+    <% end %>
+  </div>
+  <div class='col-8 text-right'>
+    <div class='row justify-content-end'>
+      <small class ='align-self-center mr-1'>Actas  </small>
+      <h2>SIGI</h2>
+    </div>
+  </div>  
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <%= render 'form', acta: @acta %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<% content_for :titulo_de_pagina, "Descargo #{@descargo.to_param} del Acta #{@acta.numero}" %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Editar', edit_acta_descargo_path(@acta, @descargo), class: 'btn btn-success' %>
+    <%= link_to 'Destruir', acta_descargo_path(@acta, @descargo),
+              method: :delete,
+              data: { confirm: '¿Confirma que quiere destruir el descargo?' }, class: 'btn btn-danger' %>
+  </div>
+
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', acta_path(@acta), class: 'btn btn-dark'  %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <h2>Atributos</h2>
+
+    <dl class="row">
+      <dt class="col-4">Creador</dt>
+      <dd class="col-8"><%= @descargo.user.email %></dt>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-4">Fecha de Creación</dt>
+      <dd class="col-8"><%= l @descargo.created_at, format: :short %></dt>
+    </dl>
+
+    <dl class="row">
+      <dt class="col-4">Texto</dt>
+      <dd class="col-8"><%= @descargo.texto %></dt>
+    </dl>
+  </div>
+</div>

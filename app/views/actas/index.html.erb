@@ -1,0 +1,53 @@
+<% content_for :titulo_de_pagina, 'Actas' %>
+
+
+<div class='row text-secondary mb-4'>
+  <div class='col-3'>
+    <%= link_to :back, class: 'btn btn-primary' do %>
+    <i class="material-icons text-secondary">
+    keyboard_backspace
+    </i>
+    <% end %>
+  </div>
+  <div class='col-8 text-right'>
+    <div class='row justify-content-end'>
+      <small class ='align-self-center mr-1'>Actas  </small>
+      <h2>SIGI</h2>
+    </div>
+  </div>  
+</div>
+
+<div class='contenido-acta row rounded-top mb-2 mt-4 mx-1 atributos'>
+  <div class='col-3 col-md-1 align-self-center'>
+    numero
+  </div>
+  <div class='col-3 col-md-1 align-self-center'>
+    infracción
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    unidad
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    servicio
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    grupo
+  </div>
+  <div class='d-none d-md-block col-md-2 align-self-center'>
+    fecha de asociación
+  </div>
+  <div class='col-3 col-md-2 align-self-center'>
+    fecha
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    estado
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+  </div>
+</div>
+
+<%= render @actas %>

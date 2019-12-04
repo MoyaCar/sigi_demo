@@ -1,0 +1,35 @@
+<div id="acta-<%= acta.id %>" class='row text-secondary bg-light mb-2 mx-1 py-1 datos'>
+  <div class='col-3 col-md-1 align-self-center'>
+    <%= acta.numero %>
+  </div>
+  <div class='col-3 col-md-1 align-self-center'>
+    <%= acta.tipo_de_infraccion %>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    <%= acta.tipo_de_unidad %>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    <%= acta.tipo_de_servicio %>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    <%= acta.grupo %>
+  </div>
+  <div class='d-none d-md-block col-md-2 align-self-center'>
+    <%= acta.fecha_de_asociacion %>
+  </div>
+  <div class='col-3 col-md-2 align-self-center'>
+    <%= acta.fecha_y_hora&.localtime&.to_s(:long) %>
+  </div>
+  <div class='d-none d-md-block col-md-1 align-self-center'>
+    <%= acta.estado %>
+  </div>
+  <div class='col-3 col-md-2 align-self-center'>
+    <i class="material-icons">
+      <%= link_to 'edit', edit_acta_path(acta), class:'opcion' %>
+      <%= link_to 'visibility', acta_path(acta), class:'opcion' %>
+      <%= link_to 'delete', acta_path(acta),
+      method: :delete,
+      data: { confirm: '¿Confirma que quiere destruir el acta?' }, class:'opcion' %>
+    </i>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<% content_for :titulo_de_pagina, 'Nuevo Tipo de Infracción' %>
+
+<div class="botonera row">
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', :back, class: 'btn btn-dark' %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <%= render 'form', tipo_de_infraccion: @tipo_de_infraccion %>
+  </div>
+</div>

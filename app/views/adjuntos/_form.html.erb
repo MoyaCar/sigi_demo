@@ -1,0 +1,31 @@
+
+<%= form.fields_for :adjuntos do |form_adjuntos| %>
+  <% form_adjuntos.object.tap do |adjunto| %>
+    <div class="row justify-content-center mt-4">
+      <div class="form-group col-10 col-lg-10 ">
+        
+        <% if adjunto.archivo.attached? %>
+          <%= text_field_tag :filename, adjunto.archivo.filename, class: 'form-control-file' %>
+        <% else %>
+          <%= form_adjuntos.file_field :archivo %>
+        <% end %>
+      </div>
+    </div>
+    <div class = 'row justify-content-center archivos'>
+    <div class="form-group col-5 col-sm-3">
+        <%= form_adjuntos.label :referencia, class: 'bmd-label-floating text-secondary campo' %>
+        <%= form_adjuntos.text_field :referencia, class: 'form-control' %>
+        <span class="bmd-help">Referencia del archivo</span>
+      </div>
+
+      <div class="form-group col-5 col-sm-7 mt-2">
+        <div class='checkbox'>
+          <%= form_adjuntos.label :_destroy, class: 'text-secondary' do %>
+          <%= form_adjuntos.check_box :_destroy %>
+            Eliminar
+          <% end %>
+        </div>  
+      </div>
+    </div>
+  <% end %>
+<% end %>

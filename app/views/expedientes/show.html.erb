@@ -1,0 +1,97 @@
+<% content_for :titulo_de_pagina, "Expediente #{@expediente.identificador}" %>
+
+<div class="botonera row">
+  <div class="acciones col">
+    <%= link_to 'Editar', edit_expediente_path(@expediente), class: 'btn btn-success' %>
+    <%= link_to 'Destruir', expediente_path(@expediente), class: 'btn btn-danger',
+      method: :delete,
+      data: { confirm: '¿Confirma que quiere destruir el expediente?' } %>
+    <%# TODO Al crear actas desde la vista de un expediente podemos pre-asociarla %>
+    <%= link_to 'Crear nuevo Acta' , new_acta_path, class: 'btn btn-dark' %>
+    <%= link_to 'Crear nuevo Dictamen' , new_expediente_dictamen_path(@expediente), class: 'btn btn-dark' %>
+  </div>
+
+  <div class="navegacion col d-flex justify-content-end">
+    <%= link_to 'Volver', :back, class: 'btn btn-dark' %>
+  </div>
+</div>
+
+<div class="contenido row">
+  <div class="col">
+    <h2>Atributos</h2>
+
+    <dl class="row">
+      <dt class="col-4">Identificador</dt>
+      <dd class="col-8"><%= @expediente.identificador %></dt>
+
+      <dt class="col-4">Tipo de Documento</dt>
+      <dd class="col-8"><%= @expediente.tipo_de_documento %></dt>
+
+      <dt class="col-4">Referencia</dt>
+      <dd class="col-8"><%= @expediente.referencia %></dt>
+    </dl>
+
+    <%# TODO Reutilizar los partials de Acta %>
+    <% if @expediente.actas.any? %>
+      <h2>Actas</h2>
+
+      <table class="table table-striped table-hover table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Infracción</th>
+            <th scope="col">T. de Unidad</th>
+            <th scope="col">T. de Servicio</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Fecha de Asociación</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Estado</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render @expediente.actas %>
+        </tbody>
+      </table>
+    <% end %>
+
+    <% if @expediente.dictamenes.any? %>
+      <h2>Dictámenes</h2>
+
+      <table class="table table-striped table-hover table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Dictamen</th>
+            <th scope="col">Identificador</th>
+            <th scope="col">Fecha de creado</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @expediente.dictamenes.each do |dictamen| %>
+            <tr>
+              <td><%= dictamen.id %></td>
+              <td><%= dictamen.identificador %></td>
+              <td><%= l dictamen.created_at, format: :short %></td>
+              <td><%= link_to 'Mostrar', expediente_dictamen_path(@expediente, dictamen) %></td>
+              <td><%= link_to 'Editar', edit_expediente_dictamen_path(@expediente, dictamen) %></td>
+              <td><%= link_to 'Destruir', expediente_dictamen_path(@expediente, dictamen),
+                method: :delete,
+                data: { confirm: '¿Confirma que quiere destruir el dictamen?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+
+    <% if @expediente.adjuntos.any? %>
+      <%= render 'adjuntos/index', adjuntos: @expediente.adjuntos %>
+    <% end %>
+  </div>
+</div>
