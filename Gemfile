@@ -10,7 +10,7 @@ gem 'puma', '~> 3.11'
 gem 'jbuilder', '~> 2.7'
 
 # Se usa para las variantes de imágenes en Active Storage.
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # UI.
 gem 'webpacker', '~> 4.0'
